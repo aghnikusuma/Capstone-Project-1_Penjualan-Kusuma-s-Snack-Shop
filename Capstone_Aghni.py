@@ -222,7 +222,11 @@ def perbarui_keranjang():
     nama_produk = input("Masukkan nama produk yang ingin diperbarui: ").strip().lower()
     
     # Cari item di keranjang
-    item_keranjang = next((item for item in keranjang if item["nama"].lower() == nama_produk), None)
+    item_keranjang = None
+    for item in keranjang:
+        if item["nama"].lower() == nama_produk.lower():
+            item_keranjang = item
+            break
     
     if not item_keranjang:
         print("Produk tidak ditemukan di keranjang.")
